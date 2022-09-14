@@ -1,17 +1,16 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
-import { routes } from 'routes'
+import { createTheme, ThemeProvider } from '@mui/material'
+import RoutesProvider from 'RoutesProvider'
 import './App.css'
 
 function App() {
+  const theme = createTheme({})
+
   return (
-    <div className='App'>
-      <Routes>
-        {routes.map((route) => (
-          <Route path={route.link} key={route.id} element={<route.element />} />
-        ))}
-        <Route path='*' element={<Navigate to='/' replace />} />
-      </Routes>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className='App'>
+        <RoutesProvider />
+      </div>
+    </ThemeProvider>
   )
 }
 
